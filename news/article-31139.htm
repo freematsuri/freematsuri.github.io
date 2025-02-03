@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh-CN">
+<html xml:lang="zh-CN" lang="zh-CN">
 
 <head>
         <link rel="canonical" href="https://freematsuri.github.io/news/article-31139.htm" />
@@ -9,6 +9,33 @@
     <title>KCP协议：从TCP到UDP家族QUIC/KCP/ENET</title>
         <meta name="description" content="TCP  KCP  停等ARQ协议  连续ARQ协议  拥塞窗口  滑动窗口  快速重传： 目录  			 行文前先安利下《再深谈TCP/IP三步握手&amp;四步挥手原理及衍生问题—长文解剖IP&n" />
         <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-31139.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="KCP协议：从TCP到UDP家族QUIC/KCP/ENET" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/e2b7ad5895aac5ee6128205287fc6846.webp" />
+        <meta property="og:release_date" content="2024-12-26T00:07:15" />
+    <meta property="og:updated_time" content="2024-12-26T00:07:15" />
+        <meta property="og:description" content="TCP  KCP  停等ARQ协议  连续ARQ协议  拥塞窗口  滑动窗口  快速重传： 目录  			 行文前先安利下《再深谈TCP/IP三步握手&amp;四步挥手原理及衍生问题—长文解剖IP&n" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="KCP协议：从TCP到UDP家族QUIC/KCP/ENET">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
     <!-- Bootstrap Min CSS -->
     <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
     <!-- Animate Min CSS -->
@@ -29,8 +56,7 @@
     <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
     <!-- Color Default CSS -->
     <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
-    
-<!-- Google tag (gtag.js) -->
+    <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -129,16 +155,16 @@
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2024-12-25-node-share-links.htm" title="12月25日→18.2M/S|2024年最新免费节点Free Matsuri订阅链接地址">12月25日→18.2M/S|2024年最新免费节点Free Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-30204.htm" title="猫打个疫苗针多少钱一支（猫打个疫苗针多少钱一支啊）">猫打个疫苗针多少钱一支（猫打个疫苗针多少钱一支啊）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-26-node-share.htm" title="12月26日→22.1M/S|2024年最新免费节点Free Matsuri订阅链接地址">12月26日→22.1M/S|2024年最新免费节点Free Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-47745.htm" title="私人出售狗小狗怎么处理（私人卖狗怎么卖）">私人出售狗小狗怎么处理（私人卖狗怎么卖）</a></li>
+                        <li class="py-2"><a href="/news/article-41810.htm" title="动物疫苗增值税怎么交纳（动物疫苗销售许可证如何办理）">动物疫苗增值税怎么交纳（动物疫苗销售许可证如何办理）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-25-free-high-speed-nodes.htm" title="1月25日→19.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月25日→19.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-36887.htm" title="Jackson 枚举序列化/反序列化">Jackson 枚举序列化/反序列化</a></li>
                         <li class="py-2"><a href="/news/article-30202.htm" title="动物医院运营与管理系统 动物医院运营与管理系统论文">动物医院运营与管理系统 动物医院运营与管理系统论文</a></li>
-                        <li class="py-2"><a href="/news/article-32105.htm" title="猫丢了是缘分尽了吗（猫丢了找回来了是有缘吗）">猫丢了是缘分尽了吗（猫丢了找回来了是有缘吗）</a></li>
-                        <li class="py-2"><a href="/news/article-30688.htm" title="微信宠物代理怎么做（微信宠物店小程序怎么做）">微信宠物代理怎么做（微信宠物店小程序怎么做）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-23-node-share-links.htm" title="12月23日→19.4M/S|2024年最新免费节点Free Matsuri订阅链接地址">12月23日→19.4M/S|2024年最新免费节点Free Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/news/article-31639.htm" title="动物医疗机构的主管部门（动物医疗机构的主管部门是哪里）">动物医疗机构的主管部门（动物医疗机构的主管部门是哪里）</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-28-free-subscribe-node.htm" title="12月28日→22.9M/S|2024年最新免费节点Free Matsuri订阅链接地址">12月28日→22.9M/S|2024年最新免费节点Free Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2024-12-22-node-share-links.htm" title="12月22日→23M/S|2024年最新免费节点Free Matsuri订阅链接地址">12月22日→23M/S|2024年最新免费节点Free Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-32590.htm" title="动物疫苗接种的目的是什么 动物疫苗接种的目的是什么呢">动物疫苗接种的目的是什么 动物疫苗接种的目的是什么呢</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-high-speed-nodes.htm" title="1月15日→22.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月15日→22.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-45796.htm" title="被猫咬了6天了打针还有用吗（孩子10几天后才说被猫咬了）">被猫咬了6天了打针还有用吗（孩子10几天后才说被猫咬了）</a></li>
+                        <li class="py-2"><a href="/news/article-36404.htm" title="Androidstudio之菜单栏设置">Androidstudio之菜单栏设置</a></li>
+                        <li class="py-2"><a href="/news/article-42317.htm" title="Spring Security核心类详解">Spring Security核心类详解</a></li>
                     </ul>
     </div>
 </div>
@@ -150,7 +176,13 @@
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">21</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
+                <h4><span class="badge" style="float: right;">6</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">93</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">30</span> <a href="/date/2024-12/" title="2024-12 归档">2024-12</a></h4>
             </li>
                     </ul>
     </div>
