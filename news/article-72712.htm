@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-72712.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>1.23 实例：正则表达式验证IP地址</title>
+        <meta name="description" content="IP 地址是网络上每台计算机的唯一标识，因此 IP 地址的错误输入将使程序无法运行。下面使用前面学习的正则表达式知识，编写一个 Java 程序来验证 IP 地址是否合法。 在定义正则表达式之前，首先要" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-72712.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="1.23 实例：正则表达式验证IP地址" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/2147e110d55ac0ee5f165b653aca1fc5.webp" />
+        <meta property="og:release_date" content="2025-03-13T09:20:40" />
+    <meta property="og:updated_time" content="2025-03-13T09:20:40" />
+        <meta property="og:description" content="IP 地址是网络上每台计算机的唯一标识，因此 IP 地址的错误输入将使程序无法运行。下面使用前面学习的正则表达式知识，编写一个 Java 程序来验证 IP 地址是否合法。 在定义正则表达式之前，首先要" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="1.23 实例：正则表达式验证IP地址">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>1.23 实例：正则表达式验证IP地址</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-tomorrow-night"> <p>IP 地址是网络上每台计算机的唯一标识，因此 IP 地址的错误输入将使程序无法运行。下面使用前面学习的正则表达式知识，编写一个 Java 程序来验证 IP 地址是否合法。</p> <p>在定义正则表达式之前，首先要知道一个正确 IP 地址的格式及组成部分。IP 地址由 4 字节构成，每字节的值为 0~255，各字节通过一个句点分隔。因此，IP 地址中的每字节有至少一个，至多三个数字。</p> <p>下面是为 IP 地址编写的正则表达式：</p> <blockquote> <p>\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}</p> </blockquote> <p>以上正则表达式对 IP 做简单的匹配，不完全和 IP 的规则一致。如果想完全匹配，读者可以重新修改匹配的正则表达式。</p> <p>创建 Test 类，在该类的 main() 方法中编写验证 IP 地址的代码。代码如下：</p> <pre><code class="prism language-java"><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Scanner<span class="token punctuation">;</span> <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>regex<span class="token punctuation">.</span>Matcher<span class="token punctuation">;</span> <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>regex<span class="token punctuation">.</span>Pattern<span class="token punctuation">;</span> <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Test</span> <span class="token punctuation">{<!-- --></span>     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         String regex <span class="token operator">=</span> <span class="token string">"\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}"</span><span class="token punctuation">;</span>         String answer <span class="token operator">=</span> <span class="token string">"Y"</span><span class="token punctuation">;</span>         <span class="token keyword">do</span> <span class="token punctuation">{<!-- --></span>             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"请输入 IP 地址："</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             Scanner scan <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span>System<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>             String phone <span class="token operator">=</span> scan<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 接收用户在控制台输入的电话号码</span>             Pattern pattern <span class="token operator">=</span> Pattern<span class="token punctuation">.</span><span class="token function">compile</span><span class="token punctuation">(</span>regex<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 编译正则表达式</span>             Matcher matcher <span class="token operator">=</span> pattern<span class="token punctuation">.</span><span class="token function">matcher</span><span class="token punctuation">(</span>phone<span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">// 创建给定输入模式的匹配器</span>             <span class="token keyword">boolean</span> bool <span class="token operator">=</span> matcher<span class="token punctuation">.</span><span class="token function">matches</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token keyword">if</span><span class="token punctuation">(</span>bool<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>   <span class="token comment">// 如果验证通过</span>                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"输入的 IP 地址正确。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"输入的IP地址格式错误。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>             System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span><span class="token string">"是否继续输入？（Y/N 或者 y/n)"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>             answer <span class="token operator">=</span> scan<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         <span class="token punctuation">}</span><span class="token keyword">while</span><span class="token punctuation">(</span>answer<span class="token punctuation">.</span><span class="token function">equalsIgnoreCase</span><span class="token punctuation">(</span><span class="token string">"Y"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"程序结束。"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>运行程序，然后输入不同格式的 IP 地址，输出结果如下所示：</p> <pre><code class="prism language-java">请输入 IP 地址：<span class="token number">11.154</span><span class="token number">.15</span><span class="token number">.1</span> 输入的 IP 地址正确。 是否继续输入？（Y<span class="token operator">/</span>N 或者 y<span class="token operator">/</span>n<span class="token punctuation">)</span>y 请输入 IP 地址：<span class="token number">22</span>a<span class="token punctuation">.</span><span class="token number">7.68</span><span class="token number">.9</span> 输入的IP地址格式错误。 是否继续输入？（Y<span class="token operator">/</span>N 或者 y<span class="token operator">/</span>n<span class="token punctuation">)</span>n 程序结束。 </code></pre> </p></div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-72049.htm">宠物医院投诉电话多少号（宠物医院投诉怎么投诉）</a></p>
+                                        <p>下一个：<a href="/news/article-72713.htm">上海宠物领养平台南平地址电话（上海宠物领养平台南平地址电话）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-46779.htm" title="深圳市宠物领养小程序（深圳市宠物领养之家官网）">深圳市宠物领养小程序（深圳市宠物领养之家官网）</a></li>
+                        <li class="py-2"><a href="/news/article-56781.htm" title="兽药厂家排名前十强产品（兽药厂家前100强）">兽药厂家排名前十强产品（兽药厂家前100强）</a></li>
+                        <li class="py-2"><a href="/news/article-45292.htm" title="动物疫苗接种方法及注意事项有哪些内容 动物疫苗接种方法及注意事项有哪些内容呢">动物疫苗接种方法及注意事项有哪些内容 动物疫苗接种方法及注意事项有哪些内容呢</a></li>
+                        <li class="py-2"><a href="/news/article-58617.htm" title="vue &#8211; vue基础/vue核心内容（2）_在线工具">vue &#8211; vue基础/vue核心内容（2）_在线工具</a></li>
+                        <li class="py-2"><a href="/news/article-66253.htm" title="C++语言表达式求值">C++语言表达式求值</a></li>
+                        <li class="py-2"><a href="/news/article-65636.htm" title="猫多久不认得主人会死（猫多久不认得主人会死掉）">猫多久不认得主人会死（猫多久不认得主人会死掉）</a></li>
+                        <li class="py-2"><a href="/news/article-36887.htm" title="Jackson 枚举序列化/反序列化">Jackson 枚举序列化/反序列化</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-6-free-node-subscribe-links.htm" title="1月6日→20.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月6日→20.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-26-free-subscribe-node.htm" title="2月26日→20.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">2月26日→20.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-42811.htm" title="1970年农历四月二十是什么星座（1970年阴历四月二十是什么星座）">1970年农历四月二十是什么星座（1970年阴历四月二十是什么星座）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">39</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <p>
+                    <a href="/">首页</a> |
+                    <a href="/free-node/">免费节点</a> |
+                    <a href="/news/">新闻资讯</a> |
+                    <a href="/about-us.htm">关于我们</a> |
+                    <a href="/disclaimer.htm">免责申明</a> |
+                    <a href="/privacy.htm">隐私申明</a> |
+                    <a href="/sitemap.xml">网站地图</a>
+                </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
