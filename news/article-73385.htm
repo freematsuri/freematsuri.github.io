@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-73385.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>mysql 时间戳定义_mysql之TIMESTAMP（时间戳）用法详解</title>
+        <meta name="description" content="一、TIMESTAMP的变体 TIMESTAMP时间戳在创建的时候可以有多重不同的特性，如： 1.在创建新记录和修改现有记录的时候都对这个数据列刷新： 2.在创建新记录的时候把这个字段设置为当前时间，" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-73385.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="mysql 时间戳定义_mysql之TIMESTAMP（时间戳）用法详解" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/a2b419adccc31c128767fce6df389edc.webp" />
+        <meta property="og:release_date" content="2025-03-14T07:04:45" />
+    <meta property="og:updated_time" content="2025-03-14T07:04:45" />
+        <meta property="og:description" content="一、TIMESTAMP的变体 TIMESTAMP时间戳在创建的时候可以有多重不同的特性，如： 1.在创建新记录和修改现有记录的时候都对这个数据列刷新： 2.在创建新记录的时候把这个字段设置为当前时间，" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="mysql 时间戳定义_mysql之TIMESTAMP（时间戳）用法详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>mysql 时间戳定义_mysql之TIMESTAMP（时间戳）用法详解</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="htmledit_views"> <div style="font-size:16px;"> <p>一、TIMESTAMP的变体</p> <p>TIMESTAMP时间戳在创建的时候可以有多重不同的特性，如：</p> <p>1.在创建新记录和修改现有记录的时候都对这个数据列刷新：</p> <p>2.在创建新记录的时候把这个字段设置为当前时间，但以后修改时，不再刷新它：</p> <p>3.在创建新记录的时候把这个字段设置为0，以后修改时刷新它：</p> <p>4.在创建新记录的时候把这个字段设置为给定值，以后修改时刷新它：</p> <p>MySQL目前不支持列的Default 为函数的形式,如达到你某列的默认值为当前更新日期与时间的功能,你可以使用TIMESTAMP列类型,下面就详细说明TIMESTAMP列类型</p> <p>二、TIMESTAMP列类型</p> <p>TIMESTAMP值可以从1970的某时的开始一直到2037年，精度为一秒，其值作为数字显示。</p> <p>TIMESTAMP值显示尺寸的格式如下表所示：</p> <p>：</p> <p>“完整”TIMESTAMP格式是14位，但TIMESTAMP列也可以用更短的显示尺寸，创造最常见的显示尺寸是6、8、12、和14。</p> <p>你可以在创建表时指定一个任意的显示尺寸，但是定义列长为0或比14大均会被强制定义为列长14。</p> <p>列长在从1～13范围的奇数值尺寸均被强制为下一个更大的偶数。</p> <p>列如：</p> <p>所有的TIMESTAMP列都有同样的存储大小，使用被指定的时期时间值的完整精度(14位)存储合法的值不考虑显示尺寸。不合法的日期，将会被强制为0存储</p> <p>这有几个含意：</p> <p>1.虽然你建表时定义了列TIMESTAMP(8)，但在你进行数据插入与更新时TIMESTAMP列实际上保存了14位的数据(包括年月日时分</p> <p>秒)，只不过在你进行查询时MySQL返回给你的是8位的年月日数据。如果你使用ALTER</p> <p>TABLE拓宽一个狭窄的TIMESTAMP列，以前被“隐蔽”的信息将被显示。</p> <p>2.同样，缩小一个TIMESTAMP列不会导致信息失去，除了感觉上值在显示时，较少的信息被显示出。</p> <p>3.尽管TIMESTAMP值被存储为完整精度，直接操作存储值的唯一函数是UNIX_TIMESTAMP()；由于MySQL返回</p> <p>TIMESTAMP列的列值是进过格式化后的检索的值，这意味着你可能不能使用某些函数来操作TIMESTAMP列(例如HOUR()或</p> <p>SECOND())，除非TIMESTAMP值的相关部分被包含在格式化的值中。</p> <p>例如，一个TIMESTAMP列只有被定义为TIMESTAMP(10)以上时，TIMESTAMP列的HH部分才会被显示，因此在更短的TIMESTAMP值上使用HOUR()会产生一个不可预知的结果。</p> <p>4.不合法TIMESTAMP值被变换到适当类型的“零”值(00000000000000)。(DATETIME,DATE亦然)</p> <p>例如你可以使用下列语句来验证：</p> <p>你可以使用TIMESTAMP列类型自动地用当前的日期和时间标记INSERT或UPDATE的操作。</p> <p>如果你有多个TIMESTAMP列，只有第一个自动更新。自动更新第一个TIMESTAMP列在下列任何条件下发生：</p> <p>1.列值没有明确地在一个INSERT或LOAD DATA INFILE语句中指定。</p> <p>2.列值没有明确地在一个UPDATE语句中指定且另外一些的列改变值。(注意一个UPDATE设置一个列为它已经有的值，这将不引起TIMESTAMP列被更新，因为如果你设置一个列为它当前的值，MySQL为了效率而忽略更改。)</p> <p>3.你明确地设定TIMESTAMP列为NULL.</p> <p>4.除第一个以外的TIMESTAMP列也可以设置到当前的日期和时间，只要将列设为NULL，或NOW()。</p> <p>第一条指令因设date1、date2为NULL,所以date1、date2值均为当前时间第二条指令因没有设date1、date2列值，第一</p> <p>个TIMESTAMP列date1为更新为当前时间，而二个TIMESTAMP列date2因日期不合法而变为“00000000000000”</p> <p>这条指令没有明确地设定date2的列值，所以第一个TIMESTAMP列date1将被更新为当前时间</p> <p>这条指令因设定date1=date1，所以在更新数据时date1列值并不会发生改变而因设定date2=NOW()，所以在更新数据时date2列值会被更新为当前时间此指令等效为：</p> <p>因MySQL返回的 TIMESTAMP 列为数字显示形式，你可以用DATE_FROMAT()函数来格式化 TIMESTAMP 列，如下所示：</p> <p>在某种程度上，你可以把一种日期类型的值赋给一个不同的日期类型的对象。</p> <p>然而，而尤其注意的是：值有可能发生一些改变或信息的损失：</p> <p>1.如果你将一个DATE值赋给一个DATETIME或TIMESTAMP对象，结果值的时间部分被设置为'00:00:00'，因为DATE值中不包含有时间信息。</p> <p>2.如果你将一个DATETIME或TIMESTAMP值赋给一个DATE对象，结果值的时间部分被删除，因为DATE类型不存储时间信息。</p> <p>3.尽管DATETIME, DATE和TIMESTAMP值全都可以用同样的格式集来指定，但所有类型不都有同样的值范围。</p> <p>例如，TIMESTAMP值不能比1970早，也不能比2037晚，这意味着，一个日期例如'1968-01-01'，当作为一个</p> <p>DATETIME或DATE值时它是合法的，但它不是一个正确TIMESTAMP值！并且如果将这样的一个对象赋值给TIMESTAMP列，它将被变换为</p> <p>0。</p> <p>三、当指定日期值时，当心某些缺陷：</p> <p>1.允许作为字符串指定值的宽松格式能被欺骗。例如，因为“:”分隔符的使用，值'10:11:12'可能看起来像时间值，但是如果在一个日期中使用，上下文将作为年份被解释成'2010-11-12'。值'10:45:15'将被变换到'0000-00-00'，因为'45'不是一个合法的月份。</p> <p>2.以2位数字指定的年值是模糊的，因为世纪是未知的。MySQL使用下列规则解释2位年值：</p> <p>在00-69范围的年值被变换到2000-2069。 在范围70-99的年值被变换到1970-1999。</p> </div> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-72713.htm">上海宠物领养平台南平地址电话（上海宠物领养平台南平地址电话）</a></p>
+                                        <p>下一个：<a href="/news/article-73386.htm">被猫抓伤怎么观察是否生病了（被猫抓伤怎么算出血）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-2-26-free-subscribe-node.htm" title="2月26日→20.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">2月26日→20.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-48740.htm" title="秋蝉中池城是好人么（干货分享）秋蝉剧情介绍池城的结局，扫黑风暴剧情分集剧情介绍，池诚，">秋蝉中池城是好人么（干货分享）秋蝉剧情介绍池城的结局，扫黑风暴剧情分集剧情介绍，池诚，</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-27-free-subscribe-node.htm" title="1月27日→22.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月27日→22.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-51357.htm" title="动物疫苗接种工作简报范文图片（动物疫苗接种工作简报范文图片高清）">动物疫苗接种工作简报范文图片（动物疫苗接种工作简报范文图片高清）</a></li>
+                        <li class="py-2"><a href="/news/article-43800.htm" title="动物疫苗排名前三名有哪些种类（动物疫苗有哪些大厂家）">动物疫苗排名前三名有哪些种类（动物疫苗有哪些大厂家）</a></li>
+                        <li class="py-2"><a href="/news/article-56213.htm" title="动物打一针疫苗多少钱 动物打一针疫苗多少钱啊">动物打一针疫苗多少钱 动物打一针疫苗多少钱啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-17-free-high-speed-nodes.htm" title="2月17日→20.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">2月17日→20.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-29-node-share.htm" title="1月29日→21.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月29日→21.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-8-free-node-subscribe-links.htm" title="3月8日→19.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月8日→19.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-28-node-share.htm" title="1月28日→20.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月28日→20.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">48</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <p>
+                    <a href="/">首页</a> |
+                    <a href="/free-node/">免费节点</a> |
+                    <a href="/news/">新闻资讯</a> |
+                    <a href="/about-us.htm">关于我们</a> |
+                    <a href="/disclaimer.htm">免责申明</a> |
+                    <a href="/privacy.htm">隐私申明</a> |
+                    <a href="/sitemap.xml">网站地图</a>
+                </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
