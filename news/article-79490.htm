@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-79490.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue跨组件传参详解</title>
+        <meta name="description" content="Vue 的组件作用域都是孤立的，不允许在子组件的模板内直接引用父组件的数据。必须使用特定的方法才能实现组件之间的数据传递。 首先用 vue-cli 创建一个项目，其中 App.vue 是父组件，com" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-79490.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="vue跨组件传参详解" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/50d7dd62ac33a21e8bc50397cb8e5ce6.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:21:30" />
+    <meta property="og:updated_time" content="2025-03-23T08:21:30" />
+        <meta property="og:description" content="Vue 的组件作用域都是孤立的，不允许在子组件的模板内直接引用父组件的数据。必须使用特定的方法才能实现组件之间的数据传递。 首先用 vue-cli 创建一个项目，其中 App.vue 是父组件，com" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue跨组件传参详解">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>vue跨组件传参详解</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>Vue 的组件作用域都是孤立的，不允许在子组件的模板内直接引用父组件的数据。必须使用特定的方法才能实现组件之间的数据传递。<br /> 首先用 vue-cli 创建一个项目，其中 App.vue 是父组件，components 文件夹下都是子组件。</p> <p>1、父组件可以使用 props 把数据传给子组件。<br /> 2、子组件可以使用 $emit 触发父组件的自定义事件。<br /> 一、父组件向子组件传递数据</p> <p>在 Vue 中，可以使用 props 向子组件传递数据。</p> <p>子组件部分：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/b481d384b3d2f76991720ea6359a0a09.jpg" alt="vue跨组件传参详解"></p> <p>这是 header.vue 的 HTML 部分，logo 是在 data 中定义的变量。</p> <p>如果需要从父组件获取 logo 的值，就需要使用 props: [‘logo’]<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/facd8ffc873960a238676d1d9115b403.jpg" alt="vue跨组件传参详解"><br /> 在 props 中添加了元素之后，就不需要在 data 中再添加变量了</p> <p>父组件部分：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/49cc2afad5b559857fe42464b367b63f.jpg" alt="vue跨组件传参详解"></p> <p>在调用组件的时候，使用 v-bind 将 logo 的值绑定为 App.vue 中定义的变量 logoMsg<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/fb4ccb2461ac932e07cd5d3ae98b9a6a.jpg" alt="vue跨组件传参详解"><br /> 然后就能将App.vue中 logoMsg 的值传给 header.vue 了：</p> <p>二、子组件向父组件传递数据</p> <p>子组件主要通过事件传递数据给父组件</p> <p>子组件部分：<br /><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/74fc117a4e965550acf078c1b1a7ca38.jpg" alt="vue跨组件传参详解"></p> <p>这是 login.vue 的 HTML 部分，当的值发生变化的时候，将 username 传递给 App.vue</p> <p>首先声明一个了方法 setUser，用 change 事件来调用 setUser</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/126c4ef1e4d62214c87fd69176e0a37b.jpg" alt="vue跨组件传参详解"></p> <p>在 setUser 中，使用了 $emit 来遍历 transferUser 事件，并返回 this.username</p> <p>其中 transferUser 是一个自定义的事件，功能类似于一个中转，this.username 将通过这个事件传递给父组件</p> <p>父组件部分：</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/b8d7955b59dd576f50531665e23612f6.jpg" alt="vue跨组件传参详解"></p> <p>在父组件 App.vue 中，声明了一个方法 getUser，用 transferUser 事件调用 getUser 方法，获取到从子组件传递过来的参数 username</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220601/cc911b4b603780b611ffaf8f1bd5c34f.jpg" alt="vue跨组件传参详解"></p> <p>getUser 方法中的参数 msg 就是从子组件传递过来的参数 username</p> <p>三、子组件向子组件传递数据</p> <p>Vue 没有直接子对子传参的方法，建议将需要传递数据的子组件，都合并为一个组件。如果一定需要子对子传参，可以先从传到父组件，再传到子组件。</p> <p>为了便于开发，Vue 推出了一个状态管理工具 Vuex，可以很方便实现组件之间的参数传递</p> </div> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-78817.htm">24小时宠物在线咨询（免费宠物专家在线咨询）</a></p>
+                                        <p>下一个：<a href="/news/article-79491.htm">【ASP.NET Core】自己编程来生成自签名的服务器证书</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/free-nodes/2025-3-14-node-share.htm" title="3月14日→20.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月14日→20.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-38357.htm" title="这几种方法帮你快速实现回到页面顶部">这几种方法帮你快速实现回到页面顶部</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-9-free-node-subscribe-links.htm" title="1月9日→21.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月9日→21.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-76754.htm" title="狗粮一般在哪买比较正宗（狗粮去哪里买比较好）">狗粮一般在哪买比较正宗（狗粮去哪里买比较好）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-15-free-high-speed-nodes.htm" title="1月15日→22.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月15日→22.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-3-free-node-subscribe.htm" title="3月3日→21.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月3日→21.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-41809.htm" title="深圳领养宠物的地方（深圳领养宠物的地方在哪里）">深圳领养宠物的地方（深圳领养宠物的地方在哪里）</a></li>
+                        <li class="py-2"><a href="/news/article-63777.htm" title="济南可以领养猫狗的宠物店 济南可以领养猫狗的宠物店有哪些">济南可以领养猫狗的宠物店 济南可以领养猫狗的宠物店有哪些</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-23-free-high-speed-nodes.htm" title="3月23日→22.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月23日→22.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-65021.htm" title="宠物粮原料（宠物粮种类）">宠物粮原料（宠物粮种类）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <p>
+                    <a href="/">首页</a> |
+                    <a href="/free-node/">免费节点</a> |
+                    <a href="/news/">新闻资讯</a> |
+                    <a href="/about-us.htm">关于我们</a> |
+                    <a href="/disclaimer.htm">免责申明</a> |
+                    <a href="/privacy.htm">隐私申明</a> |
+                    <a href="/sitemap.xml">网站地图</a>
+                </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

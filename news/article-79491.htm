@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-79491.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>【ASP.NET Core】自己编程来生成自签名的服务器证书</title>
+        <meta name="description" content="如果项目不大，或者是客户公司内部使用，或者不想花钱购买证书，又或者用于开发阶段测试……完全可以使用自签名证书。 所谓自签，就是自己给自己签名颁发的证书，自给自足，丰衣足食。 生成证书的方法和工具很多，" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-79491.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="【ASP.NET Core】自己编程来生成自签名的服务器证书" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/cdcacfcf7383814512b7b70b16023367.webp" />
+        <meta property="og:release_date" content="2025-03-23T08:21:30" />
+    <meta property="og:updated_time" content="2025-03-23T08:21:30" />
+        <meta property="og:description" content="如果项目不大，或者是客户公司内部使用，或者不想花钱购买证书，又或者用于开发阶段测试……完全可以使用自签名证书。 所谓自签，就是自己给自己签名颁发的证书，自给自足，丰衣足食。 生成证书的方法和工具很多，" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【ASP.NET Core】自己编程来生成自签名的服务器证书">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>【ASP.NET Core】自己编程来生成自签名的服务器证书</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<p>如果项目不大，或者是客户公司内部使用，或者不想花钱购买证书，又或者用于开发阶段测试……完全可以使用自签名证书。</p> <p>所谓自签，就是自己给自己签名颁发的证书，自给自足，丰衣足食。</p> <p>生成证书的方法和工具很多，你可能会想到用以前 .NET Framework SDK工具，你可能想到用 OpenSSL 工具。但是，与其用工具，还不如直接调用 .NET 自身的 API ，在项目中直接创建证书来得方便。密钥随机即可，创建证书后写入到 .pfx 文件中。这样做也很方便，有利于程序搬家。</p> <p>好，鬼话不多说，咱们开始今天的表演。</p> <p>首先，写一个类，简单粗暴易用。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">public</span><span style="color: rgba(0, 0, 255, 1)">class</span><span style="color: rgba(0, 0, 0, 1)"> CerMaker     {</span><span style="color: rgba(0, 0, 255, 1)">public</span><span style="color: rgba(0, 0, 255, 1)">static</span><span style="color: rgba(0, 0, 255, 1)">async</span> Task CreateSslCertAsync(<span style="color: rgba(0, 0, 255, 1)">string</span><span style="color: rgba(0, 0, 0, 1)"> subName,                                        DateTime bgDate,                                        DateTime endDate,</span><span style="color: rgba(0, 0, 255, 1)">string</span><span style="color: rgba(0, 0, 0, 1)"> outFile,</span><span style="color: rgba(0, 0, 255, 1)">string</span>?<span style="color: rgba(0, 0, 0, 1)"> passWd)         {</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 参数检查</span><span style="color: rgba(0, 0, 255, 1)">if</span>(subName<span style="color: rgba(0, 0, 255, 1)">is</span><span style="color: rgba(0, 0, 255, 1)">null</span> or { Length: &lt;<span style="color: rgba(128, 0, 128, 1)">3</span><span style="color: rgba(0, 0, 0, 1)"> })             {</span><span style="color: rgba(0, 0, 255, 1)">throw</span><span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)"> ArgumentNullException(nameof(subName));             }</span><span style="color: rgba(0, 0, 255, 1)">if</span>(endDate &lt;=<span style="color: rgba(0, 0, 0, 1)"> bgDate)             {</span><span style="color: rgba(0, 0, 255, 1)">throw</span><span style="color: rgba(0, 0, 255, 1)">new</span> ArgumentException(<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">结束日期应大于开始日期</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">);             }</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 随机密钥</span>             RSA key = RSA.Create(<span style="color: rgba(128, 0, 128, 1)">1024</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 创建CRT</span>             CertificateRequest crt =<span style="color: rgba(0, 0, 255, 1)">new</span><span style="color: rgba(0, 0, 0, 1)">(subName, key, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 创建自签名证书</span><span style="color: rgba(0, 0, 255, 1)">var</span> cert =<span style="color: rgba(0, 0, 0, 1)"> crt.CreateSelfSigned(bgDate, endDate);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 将证书写入文件</span><span style="color: rgba(0, 0, 255, 1)">byte</span>[] data =<span style="color: rgba(0, 0, 0, 1)"> cert.Export(X509ContentType.Pfx, passWd);</span><span style="color: rgba(0, 0, 255, 1)">await</span><span style="color: rgba(0, 0, 0, 1)"> File.WriteAllBytesAsync(outFile, data);         }     }</span></pre> </div> <p>一个类，一个静态方法，参数 subName 表示证书的标题文本，一般使用域名，比如 CN=xpxp.org、CN=www.sb.edu.cn 等。</p> <p>参数 bgDate 表示证书有效期的起始日期，一般咱们选生成证书当前时间；</p> <p>参数 endDate 表示证书有效期的终止日期，即过期时间；</p> <p>参数 outFile 表示 .pfx文件的保存路径，相对的绝对的都行，有写权限就行；</p> <p>参数 passWd 表示给.pfx文件加密的密码，可以随便定义。</p> <p>生成的过程如下：</p> <p>1、RSA.Create 方法创建密钥（包含公/私钥），内容是随机生成的，1024指密钥的长度为1024位，你也可以指定为4096位；</p> <p>2、创建一个&nbsp;CertificateRequest 实例：</p> <div class="cnblogs_code"> <pre>  CertificateRequest crt =<span style="color: rgba(0, 0, 255, 1)">new</span>(subName, key, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);</pre> </div> <p>第一个参数传的证书的标题，第二个参数是刚刚随机生成的密钥，第三个参数是哈希算法，此处选的是 SHA256 算法；第四个参数不用多想，就用 PKCS1 就行（这是块填充行为）。</p> <p>3、调用&nbsp;CreateSelfSigned 方法，就能创建证书了；</p> <p>4、调用证书的 Export 方法把其导出为 .pfx 格式的数据；</p> <p>5、把数据写入文件，收工。</p> <p>---------------------------------------------</p> <p>你看，多 Easy 的事，不用费心去找什么工具了，自己动一动手就成了。</p> <p>然后，在 ASP.NET Core 项目里，咱们先检查一下证书文件存不存在，如果不存在，自动生成一个。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 先创建自签名证书</span><span style="color: rgba(0, 0, 255, 1)">const</span><span style="color: rgba(0, 0, 255, 1)">string</span> CER_FILE =<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">host.pfx</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 0, 255, 1)">const</span><span style="color: rgba(0, 0, 255, 1)">string</span> PASSWD =<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">dagongji</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">;</span><span style="color: rgba(0, 0, 255, 1)">const</span><span style="color: rgba(0, 0, 255, 1)">string</span> SUB_NAME =<span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(128, 0, 0, 1)">CN=万年坑玩具厂.com.cn</span><span style="color: rgba(128, 0, 0, 1)">"</span><span style="color: rgba(0, 0, 0, 1)">; DateTime today</span>=<span style="color: rgba(0, 0, 0, 1)"> DateTime.Now; DateTime endday</span>= today.AddDays(<span style="color: rgba(128, 0, 128, 1)">365</span><span style="color: rgba(0, 0, 0, 1)">);</span><span style="color: rgba(0, 0, 255, 1)">if</span>(!<span style="color: rgba(0, 0, 0, 1)">File.Exists(CER_FILE)) {</span><span style="color: rgba(0, 0, 255, 1)">await</span><span style="color: rgba(0, 0, 0, 1)"> CerMaker.CreateSslCertAsync(SUB_NAME, today, endday, CER_FILE, PASSWD); }</span></pre> </div> <p>一般来说，项目的证书并不需要换来换去，所以，咱们可以把生成证书的代码写到一个控制台应用项目中，生成一个命令行工具，自己留着用，只需要执行它生成证书文件，再放到 ASP.NET Core 项目的目录下就可以了。</p> <p>在 build 应用程序之前，配置一下 Kestrel 服务器，使用咱们自己生成的证书文件。</p> <div class="cnblogs_code"> <pre><span style="color: rgba(0, 0, 255, 1)">var</span> builder =<span style="color: rgba(0, 0, 0, 1)"> WebApplication.CreateBuilder(args);</span><span style="color: rgba(0, 128, 0, 1)">//</span><span style="color: rgba(0, 128, 0, 1)"> 配置证书</span> builder.WebHost.ConfigureKestrel(opt =&gt;<span style="color: rgba(0, 0, 0, 1)"> {     opt.ConfigureHttpsDefaults(cnncop</span>=&gt;<span style="color: rgba(0, 0, 0, 1)">     {<span style="background-color: rgba(255, 255, 0, 1)"><strong>cnncop.ServerCertificate</strong></span></span><span style="background-color: rgba(255, 255, 0, 1)"><strong>=<span style="color: rgba(0, 0, 255, 1)">new</span></strong></span><span style="color: rgba(0, 0, 0, 1)"><span style="background-color: rgba(255, 255, 0, 1)"><strong> X509Certificate2(CER_FILE, PASSWD);</strong></span>     }); });</span><span style="color: rgba(0, 0, 255, 1)">var</span> app = builder.Build();</pre> </div> <p>这是用于独立启动的 ASP.NET Core 应用程序（使用内置的 Kestrel 服务器）。如果你用的 IIS，那么证书是在IIS管理器中配置（IIS管理器有生成自签名证书的功能）；如果你用的是 nginx，也是在服务器的配置文件中配置证书，而不是在 ASP.NET Core 代码中。</p> <p>由于证书是自己签给自己的，不是从权威机构买的，所以，当浏览器访问时，会有不安全提示。只要你确认是你自己的证书，或者客户知道这是他们自家可用的证书就可以了。浏览器肯定不认识自签证书的。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4113148dd8ffa2def9cdc0d233f96c03.jpg" alt="【ASP.NET Core】自己编程来生成自签名的服务器证书"></p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/bcf6e4caf7d011bad2c5da8506aefc04.jpg" alt="【ASP.NET Core】自己编程来生成自签名的服务器证书"></p> <p>好了，今天这个好用的技巧就分享到这儿了。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-79490.htm">vue跨组件传参详解</a></p>
+                                        <p>下一个：<a href="/news/article-80161.htm">linux设置自动获取ip命令,详解如何设置CentOS 7开机自动获取IP地址</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-49782.htm" title="动物防疫疫苗管理工作总结报告（动物疫苗管理员工作年度总结）">动物防疫疫苗管理工作总结报告（动物疫苗管理员工作年度总结）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-2-15-free-node-subscribe-links.htm" title="2月15日→18.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">2月15日→18.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-22-free-node-subscribe-links.htm" title="1月22日→19.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月22日→19.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-76081.htm" title="vue3+elementUI-plus 项目实战登录">vue3+elementUI-plus 项目实战登录</a></li>
+                        <li class="py-2"><a href="/news/article-79491.htm" title="【ASP.NET Core】自己编程来生成自签名的服务器证书">【ASP.NET Core】自己编程来生成自签名的服务器证书</a></li>
+                        <li class="py-2"><a href="/news/article-56213.htm" title="动物打一针疫苗多少钱 动物打一针疫苗多少钱啊">动物打一针疫苗多少钱 动物打一针疫苗多少钱啊</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-16-free-node-subscribe-links.htm" title="1月16日→18.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月16日→18.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-44307.htm" title="宠物店一年的利润有多大（宠物店生意好的一般多少收入一个月）">宠物店一年的利润有多大（宠物店生意好的一般多少收入一个月）</a></li>
+                        <li class="py-2"><a href="/news/article-45292.htm" title="动物疫苗接种方法及注意事项有哪些内容 动物疫苗接种方法及注意事项有哪些内容呢">动物疫苗接种方法及注意事项有哪些内容 动物疫苗接种方法及注意事项有哪些内容呢</a></li>
+                        <li class="py-2"><a href="/news/article-76753.htm" title="@Valid 参数校验不生效问题解决">@Valid 参数校验不生效问题解决</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">75</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <p>
+                    <a href="/">首页</a> |
+                    <a href="/free-node/">免费节点</a> |
+                    <a href="/news/">新闻资讯</a> |
+                    <a href="/about-us.htm">关于我们</a> |
+                    <a href="/disclaimer.htm">免责申明</a> |
+                    <a href="/privacy.htm">隐私申明</a> |
+                    <a href="/sitemap.xml">网站地图</a>
+                </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
