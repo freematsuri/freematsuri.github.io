@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-82259.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>【面试普通人VS高手系列】Spring Boot中自动装配机制的原理</title>
+        <meta name="description" content="最近一个粉丝说，他面试了4个公司，有三个公司问他：“Spring Boot 中自动装配机制的原理” 他回答了，感觉没回答错误，但是怎么就没给offer呢？ 对于这个问题，看看普通人和高手该如何回答。 " />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-82259.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="【面试普通人VS高手系列】Spring Boot中自动装配机制的原理" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/6be35bc412b3e061c7f34fcf477d647f.webp" />
+        <meta property="og:release_date" content="2025-03-27T08:12:45" />
+    <meta property="og:updated_time" content="2025-03-27T08:12:45" />
+        <meta property="og:description" content="最近一个粉丝说，他面试了4个公司，有三个公司问他：“Spring Boot 中自动装配机制的原理” 他回答了，感觉没回答错误，但是怎么就没给offer呢？ 对于这个问题，看看普通人和高手该如何回答。 " />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="【面试普通人VS高手系列】Spring Boot中自动装配机制的原理">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>【面试普通人VS高手系列】Spring Boot中自动装配机制的原理</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                  				  				  				<blockquote> <p>最近一个粉丝说，他面试了4个公司，有三个公司问他：“Spring Boot 中自动装配机制的原理”</p> <p>他回答了，感觉没回答错误，但是怎么就没给offer呢？</p> <p>对于这个问题，看看普通人和高手该如何回答。</p> </blockquote> <h2 id="普通人">普通人：</h2> <p>嗯… Spring Boot里面的自动装配，就是@EnableAutoConfiguration注解。</p> <p>嗯…它可以实现Bean的自动管理，不需要我们手动再去配置。</p> <h2 id="高手">高手：</h2> <p>自动装配，简单来说就是自动把第三方组件的Bean装载到Spring IOC器里面，不需要开发人员再去写Bean的装配配置。</p> <p>在Spring Boot应用里面，只需要在启动类加上@SpringBootApplication注解就可以实现自动装配。</p> <p>@SpringBootApplication是一个复合注解，真正实现自动装配的注解是@EnableAutoConfiguration。</p> <p><img decoding="async" src="http://img.555519.xyz/uploads3/20220509/4f0a5adef98f428dc75f10f249c2daec.jpg" alt="【面试普通人VS高手系列】Spring Boot中自动装配机制的原理"></p> <p>自动装配的实现主要依靠三个核心关键技术。</p> <ol> <li>引入Starter启动依赖组件的时候，这个组件里面必须要包含@Configuration配置类，在这个配置类里面通过@Bean注解声明需要装配到IOC容器的Bean对象。</li> <li>这个配置类是放在第三方的jar包里面，然后通过SpringBoot中的约定优于配置思想，把这个配置类的全路径放在classpath:/META-INF/spring.factories文件中。这样SpringBoot就可以知道第三方jar包里面的配置类的位置，这个步骤主要是用到了Spring里面的SpringFactoriesLoader来完成的。</li> <li>SpringBoot拿到所第三方jar包里面声明的配置类以后，再通过Spring提供的ImportSelector接口，实现对这些配置类的动态加载。</li> </ol> <p>在我看来，SpringBoot是约定优于配置这一理念下的产物，所以在很多的地方，都会看到这类的思想。它的出现，让开发人员更加聚焦在了业务代码的编写上，而不需要去关心和业务无关的配置。</p> <p>其实，自动装配的思想，在SpringFramework3.x版本里面的@Enable注解，就有了实现的雏形。@Enable注解是模块驱动的意思，我们只需要增加某个@Enable注解，就自动打开某个功能，而不需要针对这个功能去做Bean的配置，@Enable底层也是帮我们去自动完成这个模块相关Bean的注入。</p> <p>以上，就是我对Spring Boot自动装配机制的理解。</p> <h2 id="总结">总结</h2> <p>发现了吗？高手和普通人的回答，并不是回答的东西多和少。</p> <p>而是让面试官看到你对于这个技术领域的理解深度和自己的见解，从而让面试官在一大堆求职者中，对你产生清晰的印象。</p> <p>好的，本期的普通人VS高手面试系列就到这里结束了，喜欢的朋友记得点赞收藏。</p> <p>我是Mic，一个工作了14年的Java程序员，咱们下期再见。</p> 			                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-81558.htm">猫粮狗粮加工机器（猫粮狗粮生产设备小型）</a></p>
+                                        <p>下一个：<a href="/news/article-82260.htm">宠康动物医院电话地址（宠康动物医院电话地址查询）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-71398.htm" title="去哪领养宠物狗（去哪可以领养宠物狗）">去哪领养宠物狗（去哪可以领养宠物狗）</a></li>
+                        <li class="py-2"><a href="/news/article-78817.htm" title="24小时宠物在线咨询（免费宠物专家在线咨询）">24小时宠物在线咨询（免费宠物专家在线咨询）</a></li>
+                        <li class="py-2"><a href="/news/article-57915.htm" title="动物疫苗注射证明怎么开的（动物疫苗注射证明怎么开的啊）">动物疫苗注射证明怎么开的（动物疫苗注射证明怎么开的啊）</a></li>
+                        <li class="py-2"><a href="/news/article-48219.htm" title="动物医院实践心得体会总结报告范文（动物医院实践心得体会总结报告范文怎么写）">动物医院实践心得体会总结报告范文（动物医院实践心得体会总结报告范文怎么写）</a></li>
+                        <li class="py-2"><a href="/news/article-63777.htm" title="济南可以领养猫狗的宠物店 济南可以领养猫狗的宠物店有哪些">济南可以领养猫狗的宠物店 济南可以领养猫狗的宠物店有哪些</a></li>
+                        <li class="py-2"><a href="/news/article-39835.htm" title="宠物粮食加工厂设备生产厂家电话号码（宠物粮食加工厂需要投资多少钱）">宠物粮食加工厂设备生产厂家电话号码（宠物粮食加工厂需要投资多少钱）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-1-7-node-share.htm" title="1月7日→21.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">1月7日→21.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-69440.htm" title="动物疫苗批号查询网站官网入口下载（动物疫苗2021）">动物疫苗批号查询网站官网入口下载（动物疫苗2021）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-13-free-high-speed-nodes.htm" title="3月13日→19.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月13日→19.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-37853.htm" title="SpringBoot中获取profile的方法详解_java">SpringBoot中获取profile的方法详解_java</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">83</span> <a href="/date/2025-02/" title="2025-02 归档">2025-02</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">84</span> <a href="/date/2025-01/" title="2025-01 归档">2025-01</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <p>
+                    <a href="/">首页</a> |
+                    <a href="/free-node/">免费节点</a> |
+                    <a href="/news/">新闻资讯</a> |
+                    <a href="/about-us.htm">关于我们</a> |
+                    <a href="/disclaimer.htm">免责申明</a> |
+                    <a href="/privacy.htm">隐私申明</a> |
+                    <a href="/sitemap.xml">网站地图</a>
+                </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
