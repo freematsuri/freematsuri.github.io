@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-100612.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>java中空指针异常情况以及解决办法</title>
+        <meta name="description" content="概述： 出现空指针异常，常常是因为我们调用的对象是空的而抛出的异常。  问题描述： 第一种: 　out.println(request.getParameter("username"));   如果r" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-100612.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="java中空指针异常情况以及解决办法" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/34dd042a14f969b9a574854f812dabe9.webp" />
+        <meta property="og:release_date" content="2025-04-21T06:49:28" />
+    <meta property="og:updated_time" content="2025-04-21T06:49:28" />
+        <meta property="og:description" content="概述： 出现空指针异常，常常是因为我们调用的对象是空的而抛出的异常。  问题描述： 第一种: 　out.println(request.getParameter("username"));   如果r" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="java中空指针异常情况以及解决办法">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>java中空指针异常情况以及解决办法</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <h2> <a id="_0" rel="nofollow"></a>概述：</h2> <p>出现空指针异常，常常是因为我们调用的对象是空的而抛出的异常。</p> <h2> <a id="_4" rel="nofollow"></a>问题描述：</h2> <p><strong>第一种:</strong></p> <pre><code class="prism language-java">　out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  </code></pre> <p>如果request里面并没有username的值，这时无法对空对象进行操作的，就会抛出异常。</p> <p><strong>第二种：</strong></p> <pre><code class="prism language-java">String userName <span class="token operator">=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  　　If <span class="token punctuation">(</span>userName<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  　　<span class="token punctuation">{<!-- --></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span>  </code></pre> <p>如果没有username值，或者username为null时，是不能将一个为null的对象与另外一个对象进行比较的。</p> <pre><code class="prism language-java">If <span class="token punctuation">(</span><span class="token string">"root"</span><span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>user Name<span class="token punctuation">)</span><span class="token punctuation">)</span>  　 <span class="token punctuation">{<!-- --></span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">}</span> </code></pre> <p>如果返回值与常量进行比较时，就可以避免调用null对象的equals方法。不会抛出异常。</p> <p><strong>第三种：</strong><br /> 假设有一个student类，有属性name。</p> <pre><code class="prism language-java">Student a<span class="token punctuation">;</span> String b <span class="token operator">=</span> a<span class="token punctuation">.</span>name<span class="token punctuation">;</span> </code></pre> <p>这个时候就会报错，因为a为空的，解决办法就是让a指向一个对象，Student a = new Student();</p> <h2> <a id="_40" rel="nofollow"></a>问题定位：</h2> <p>对于日志中的报错信息，在java中抛出异常是从内往外，因此只需要重点关注第一行报错信息，下面的报错都是由于一层层传递调用该方法导致。</p> <p><strong>Java空指针异常的若干解决方案：</strong><br /> Java中任何对象都可以为空，我们可以使用若干种方法来避免产生这类异常。比如我们传统的空值检测，编程规范，以及使用java中各种工具类。</p> <p>(1)最常用的一种就是直接对 对象进行判断，比如if(Object == null)来对所有用到的对象进行判断，这个对象也就是我们常用的函数参数，返回值，以及类实例的成员变量等。当我们检测到null值时，我们可以异常的类型抛出更具有针对性的异常类型，再附加上我们自己加的消息内容。我们也可以直接使用一些库函数来简化代码：</p> <pre><code class="prism language-java">Object checkData <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">requireNoNull</span><span class="token punctuation">(</span>resultMessage<span class="token punctuation">,</span><span class="token string">"The resultMessage must not be null"</span><span class="token punctuation">)</span> </code></pre> <p>如果我们使用过Lombok工具的话，里面有一个@NotNull注解，就是指被注释的元素不能为空，就会自定检测。</p> <p>（2）第二种方法就是遵守编程规范，可以减少一定的空指针异常的发生。</p> <pre><code class="prism language-java">Strings<span class="token punctuation">.</span><span class="token function">isNullOrEmpty</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span> CollectionUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>collection<span class="token punctuation">)</span><span class="token punctuation">;</span> StringUtils<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token keyword">if</span><span class="token punctuation">(</span>object <span class="token operator">!=</span> null<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     object<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> <span class="token comment">// 使用toString()这种方法的话，如果object为空的话，就会抛出异常</span>  String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>object<span class="token punctuation">)</span> <span class="token comment">//将Object转换为字符串，不管是否为null，不会抛出异常</span> </code></pre> <p>如果返回是集合类型。而且是空的，不要返回null值，而是要返回一个空的集合，如果返回类型是对象的话，我们可以抛出异常。</p> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token punctuation">{<!-- --></span>      <span class="token keyword">private</span> <span class="token keyword">static</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>Integer<span class="token punctuation">&gt;</span></span> numbers <span class="token operator">=</span> null<span class="token punctuation">;</span>        <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token generics function"><span class="token punctuation">&lt;</span>Integer<span class="token punctuation">&gt;</span></span> <span class="token function">getList</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>           <span class="token keyword">if</span> <span class="token punctuation">(</span>numbers <span class="token operator">==</span> null<span class="token punctuation">)</span>                <span class="token keyword">return</span> Collections<span class="token punctuation">.</span><span class="token function">emptyList</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>           <span class="token keyword">else</span>                <span class="token keyword">return</span> numbers<span class="token punctuation">;</span>      <span class="token punctuation">}</span> <span class="token punctuation">}</span> </code></pre> <p>检查一个方法的参数，在执行方法之前，确保检查了参数是否null，当参数被适当检查后，方法会继续执行。否则抛出叫做llegalArgumentException的异常，并通知调用的方法传入的参数有误。</p> <p>使用三元运算符，可以避免NullPointerException，形式如下：<br /> boolean expression ? value1:value2;</p> <h2> <a id="NullPointerException_91" rel="nofollow"></a>存在NullPointerException的安全方法：</h2> <p><strong>第一种使用instanceof 操作符</strong><br /> 即使对象的引用为null，instanceOf操作符可使用。当引用为null时，instanceof操作符返回false，而且不会抛出NullPointerException,比如：</p> <pre><code class="prism language-java">String str <span class="token operator">=</span> null<span class="token punctuation">;</span> <span class="token keyword">if</span><span class="token punctuation">(</span>str <span class="token keyword">instanceof</span> <span class="token class-name">null</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>     log<span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">}</span> </code></pre> <h2> <a id="_103" rel="nofollow"></a>如何避免：</h2> <p>确保所有对象在使用之前被初始化。</p> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-99865.htm">有人死于被猫咬伤吗（有人死于被野猫抓吗）</a></p>
+                                        <p>下一个：<a href="/news/article-100614.htm">RequestBody多个参数Map实现以及前端json传参方式</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-84400.htm" title="免费领养宠物的应用有哪些呢（免费领养宠物的平台是真的吗）">免费领养宠物的应用有哪些呢（免费领养宠物的平台是真的吗）</a></li>
+                        <li class="py-2"><a href="/news/article-89454.htm" title="郑州市动物防疫站电话查询号码（郑州动物防疫监督所）">郑州市动物防疫站电话查询号码（郑州动物防疫监督所）</a></li>
+                        <li class="py-2"><a href="/news/article-72713.htm" title="上海宠物领养平台南平地址电话（上海宠物领养平台南平地址电话）">上海宠物领养平台南平地址电话（上海宠物领养平台南平地址电话）</a></li>
+                        <li class="py-2"><a href="/news/article-79490.htm" title="vue跨组件传参详解">vue跨组件传参详解</a></li>
+                        <li class="py-2"><a href="/news/article-85833.htm" title="【PyTorch】Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same">【PyTorch】Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same</a></li>
+                        <li class="py-2"><a href="/news/article-78816.htm" title="宠物粮厂家招聘（宠物粮食公司）">宠物粮厂家招聘（宠物粮食公司）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-17-free-node-subscribe.htm" title="4月17日→22.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月17日→22.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-94168.htm" title="上海宠物领养网点有哪些（上海宠物狗领养网站）">上海宠物领养网点有哪些（上海宠物狗领养网站）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-26-free-node-subscribe-links.htm" title="3月26日→18.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月26日→18.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-15-free-subscribe-node.htm" title="3月15日→21.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月15日→21.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">60</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
