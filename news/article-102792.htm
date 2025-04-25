@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-102792.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>函数的返回值存储问题</title>
+        <meta name="description" content="我们往往将函数里面的某个变量作为函数的返回值，但是我们知道，函数内部定义的变量生命周期只存在于函数体内，出了这个函数生命周期就结束了，  将其作为返回值，难道不会出问题吗？ 如果不会出问题，那这个返回" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-102792.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="函数的返回值存储问题" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/caaba8547d2729491fea17301c87e8fc.webp" />
+        <meta property="og:release_date" content="2025-04-24T09:16:06" />
+    <meta property="og:updated_time" content="2025-04-24T09:16:06" />
+        <meta property="og:description" content="我们往往将函数里面的某个变量作为函数的返回值，但是我们知道，函数内部定义的变量生命周期只存在于函数体内，出了这个函数生命周期就结束了，  将其作为返回值，难道不会出问题吗？ 如果不会出问题，那这个返回" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="函数的返回值存储问题">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>函数的返回值存储问题</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p>我们往往将函数里面的某个变量作为函数的返回值，但是我们知道，函数内部定义的变量生命周期只存在于函数体内，出了这个函数生命周期就结束了，</p> <ul> <li>将其作为返回值，难道不会出问题吗？</li> <li>如果不会出问题，那这个返回值存储在哪里呢？</li> <li>之所以不会出问题，是因为什么呢，难道被作为返回值的变量存储位置发生了变化？</li> <li>返回值的存储位置是固定的吗？</li> <li>能够存储多大容量的返回值？</li> </ul> <p>带着上面的疑问，我准备研究一下。</p> <p> 调用函数时，函数的返回值存放的位置具体在哪里呢？按照概念来说，函数的返回值应该放在被调用函数运行结束之后，主调函数可以有效访问的地方，也就是说，函数返回值应当存放在主调函数开辟的栈空间</p> <p>但是，计算机硬件的飞速发展使得CPU的通用寄存器字长在不断增长，个数也不断增多，因此在很多情况下，函数的返回值直接被存放在了CPU的通用寄存器中，而并非一定需要计算机的内存空间</p> <p>具体类型的返回值的存放位置如下所示：</p> <p>char（8bit）：寄存器a1<br /> short（16bit）：寄存器ax<br /> int（32bit）：寄存器eax<br /> double（64bit）：协处理器堆栈<br /> 指针、引用：寄存器eax<br /> 类的对象且体积超过64bit：主调函数会在函数栈上创建临时对象存放<br /> &nbsp;</p> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-101990.htm">助理宠物医生资格证怎么考的（宠物助理医师）</a></p>
+                                        <p>下一个：<a href="/news/article-102794.htm">动物疫苗价格一览表图片高清大图下载 动物疫苗价格一览表图片高清大图下载</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-71398.htm" title="去哪领养宠物狗（去哪可以领养宠物狗）">去哪领养宠物狗（去哪可以领养宠物狗）</a></li>
+                        <li class="py-2"><a href="/news/article-82260.htm" title="宠康动物医院电话地址（宠康动物医院电话地址查询）">宠康动物医院电话地址（宠康动物医院电话地址查询）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-23-node-share-links.htm" title="4月23日→21.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月23日→21.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-102794.htm" title="动物疫苗价格一览表图片高清大图下载 动物疫苗价格一览表图片高清大图下载">动物疫苗价格一览表图片高清大图下载 动物疫苗价格一览表图片高清大图下载</a></li>
+                        <li class="py-2"><a href="/news/article-96156.htm" title="新手养猫入门必备攻略百度网盘（新手养猫宝典）">新手养猫入门必备攻略百度网盘（新手养猫宝典）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-24-node-share-links.htm" title="3月24日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月24日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-70081.htm" title="宠物用品进货平台渠道（宠物用品拿货）">宠物用品进货平台渠道（宠物用品拿货）</a></li>
+                        <li class="py-2"><a href="/news/article-103602.htm" title="【Azure 应用服务】Azure Function 启用 Managed Identity后， Powershell Funciton出现 ERROR: ManagedIdentityCredential authentication failed">【Azure 应用服务】Azure Function 启用 Managed Identity后， Powershell Funciton出现 ERROR: ManagedIdentityCredential authentication failed</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-3-16-free-node-subscribe-links.htm" title="3月16日→19.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">3月16日→19.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-99057.htm" title="MySQL的安装和配置(超详细图文教程)">MySQL的安装和配置(超详细图文教程)</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">71</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">90</span> <a href="/date/2025-03/" title="2025-03 归档">2025-03</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
