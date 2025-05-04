@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-111107.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>redis在CentOs服务器上的安装和设置开机自启动</title>
+        <meta name="description" content="一、安装 1、官网下载Redis  2、上传下载好的redis压缩包到 /home/software 3、解压 tar -zxvf redis-6.2.6.tar.gz 4、安装所需gcc环境 yum" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-111107.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="redis在CentOs服务器上的安装和设置开机自启动" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/a8163a3eb5a66183d07591fe1c63dc25.webp" />
+        <meta property="og:release_date" content="2025-05-04T09:27:08" />
+    <meta property="og:updated_time" content="2025-05-04T09:27:08" />
+        <meta property="og:description" content="一、安装 1、官网下载Redis  2、上传下载好的redis压缩包到 /home/software 3、解压 tar -zxvf redis-6.2.6.tar.gz 4、安装所需gcc环境 yum" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="redis在CentOs服务器上的安装和设置开机自启动">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>redis在CentOs服务器上的安装和设置开机自启动</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="htmledit_views"> <p><strong>一、安装</strong></p> <p>1、官网下载Redis</p> <p><img fetchpriority="high" decoding="async" alt="" height="364" src="http://img.555519.xyz/uploads3/20220902/f93fedad86c81bc11e54a4ccee765d54.jpg"></p> <p>2、上传下载好的redis压缩包到 /home/software</p> <p>3、解压</p> <pre><code class="language-bash">tar -zxvf redis-6.2.6.tar.gz</code></pre> <p>4、安装所需gcc环境</p> <pre><code class="language-bash">yum install gcc-c++</code></pre> <p>5、<strong>cd redis-6.2.6/</strong></p> <p>6、<strong>make &amp;&amp; make install</strong></p> <p>&nbsp;7、安装完毕</p> <p><img decoding="async" alt="" height="237" src="http://img.555519.xyz/uploads3/20220902/e4807597da03216ad99dffb18c469e1b.jpg"></p> <p><strong>&nbsp;二、设置开机自启动</strong></p> <p>在设置之前，做一些自己的修改，以使redis更好的符合我们的生产环境</p> <p>1、进入redis目录下的ustils</p> <pre><code class="language-bash">cd /home/software/redis-6.2.6/utils/</code></pre> <p>2、拷贝</p> <pre><code class="language-bash">cp redis_init_script /etc/init.d/</code></pre> <p><img decoding="async" alt="" height="164" src="http://img.555519.xyz/uploads3/20220902/5e4baa19f14c94634dc9e401ead0a073.jpg"></p> <p>3、回到redis目录。<strong>cd /home/software/redis-6.2.6/，</strong>新建文件夹</p> <pre><code class="language-bash">mkdir /usr/local/redis -p</code></pre> <p>&nbsp;拷贝核心配置文件redis.conf到新创建的文件夹中</p> <pre><code class="language-bash">cp redis.conf /usr/local/redis/</code></pre> <p><img loading="lazy" decoding="async" alt="" height="120" src="http://img.555519.xyz/uploads3/20220902/54bca3af0ca99765784ce8006fbbc4d2.jpg"></p> <p><strong>&nbsp;cd /usr/local/redis</strong></p> <p>&nbsp;4、<strong>vim redis.conf</strong>修改配置文件如下</p> <p>①&nbsp; daemonize yes&nbsp; //是否后台启动</p> <p><img loading="lazy" decoding="async" alt="" height="314" src="http://img.555519.xyz/uploads3/20220902/d53bf54921f23c3fd8a6ba1cfaed13c3.jpg"></p> <p>②&nbsp; dir /usr/local/redis/working&nbsp; &nbsp;//写明redis的工作空间</p> <p><img loading="lazy" decoding="async" alt="" height="315" src="http://img.555519.xyz/uploads3/20220902/5b002c675de081c5e2d1c6e7f14ea1a5.jpg"></p> <p>&nbsp;所以要在此目录下创建一个working文件夹<strong>mkdir working</strong></p> <p><img loading="lazy" decoding="async" alt="" height="117" src="http://img.555519.xyz/uploads3/20220902/8dc7c870a27dd1435d8f6f77b0cf71c8.jpg"></p> <p>&nbsp;③&nbsp; bind 0.0.0.0&nbsp; //如果想要外部能访问redis，则改成0.0.0.0，原来是127.0.0.1，只能被内部访问</p> <p><img loading="lazy" decoding="async" alt="" height="317" src="http://img.555519.xyz/uploads3/20220902/ed0f7309d7375c177c6c4ba02423cad5.jpg"></p> <p>&nbsp;④&nbsp; requirepass 123456&nbsp; &nbsp;//设置redis密码，默认是被注释的，不需要密码。在云服务器上的密码记得设置的复杂些，这里是本地虚拟机所以无关紧要。</p> <p><img loading="lazy" decoding="async" alt="" height="310" src="http://img.555519.xyz/uploads3/20220902/a0069d77e68b4062ef512822f6639c4d.jpg"></p> <p>至此核心配置文件就修改完毕了，可以根据自己实际需求修改</p> <p>5、进入/etc/init.d/，修改一开始复制的启动脚本redis_init_script 。</p> <p><strong>cd /etc/init.d/</strong></p> <p><strong>vim redis_init_script</strong></p> <p><img loading="lazy" decoding="async" alt="" height="296" src="http://img.555519.xyz/uploads3/20220902/be42f22f4f1f6637d95c59b32207e823.jpg"></p> <p>&nbsp;（这里修改了CONF="/usr/local/redis/redis.conf"，指定我们的配置文件的位置。其他像端口之类的保持默认即可）</p> <p>6、赋予脚本可执行文件</p> <pre><code class="language-bash">chmod 777 redis_init_script</code></pre> <p>7、启动脚本</p> <pre><code class="language-bash">./redis_init_script start</code></pre> <p>成功启动，如图：</p> <p><img loading="lazy" decoding="async" alt="" height="247" src="http://img.555519.xyz/uploads3/20220902/dbee62f4ba6bc42c6c97eecbdf6dc57c.jpg"></p> <p>&nbsp;8、设置开机自启动</p> <p><strong>vim redis_init_script</strong>加入如下内容</p> <pre><code>#chkconfig: 22345 10 90 #description: Start and Stop redis</code></pre> <p><img loading="lazy" decoding="async" alt="" height="270" src="http://img.555519.xyz/uploads3/20220902/f835457dc9fd89aa2929194cf93bac68.jpg"></p> <p>&nbsp;9、注册到开机自启动服务中</p> <pre><code class="language-bash">chkconfig redis_init_script on</code></pre> <p>10、测试</p> <p>输入reboot，重启centOs7。</p> <p>重启成功后，重新连接，输入 ps -ef | grep redis</p> <p><img loading="lazy" decoding="async" alt="" height="347" src="http://img.555519.xyz/uploads3/20220902/c29b77ffd0bf53ef239bfda1d7cc6c05.jpg"></p> <p>开机自启动成功！</p> <p><strong>题外：</strong></p> <p>一、在上面设置了redis密码的话，我们使用脚本关闭redis服务时会报错。</p> <p><img loading="lazy" decoding="async" alt="" height="144" src="http://img.555519.xyz/uploads3/20220902/42392349b9e27d685f47f72ab68c4460.jpg"></p> <p>&nbsp;需要在脚本里面设置我们的密码</p> <pre><code class="language-bash">vim /etc/init.d/redis_init_script</code></pre> <p><img loading="lazy" decoding="async" alt="" height="423" src="http://img.555519.xyz/uploads3/20220902/7cf86fc902297710b6ce4ad691a9f875.jpg"></p> <p>&nbsp;成功</p> <p><img loading="lazy" decoding="async" alt="" height="71" src="http://img.555519.xyz/uploads3/20220902/b6d3beb93ac7f5867cbde385e9b74a7e.jpg"></p> <p>二、关于设置了密码的redis如何访问</p> <p><strong>redis-cli</strong></p> <p><strong>auth 123456</strong></p> <p><img loading="lazy" decoding="async" alt="" height="158" src="http://img.555519.xyz/uploads3/20220902/35cad52f523bfd2a39dbc4561e850d3b.jpg"></p> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-110262.htm">动物疫苗公司10强排名最新 动物疫苗公司10强排名最新名单</a></p>
+                                        <p>下一个：<a href="/news/article-111110.htm">动物疫苗公司销量排名前十名（动物疫苗行业龙头）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-85833.htm" title="【PyTorch】Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same">【PyTorch】Input type (torch.cuda.FloatTensor) and weight type (torch.FloatTensor) should be the same</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-4-free-node-subscribe-links.htm" title="4月4日→21.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月4日→21.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-node-share-links.htm" title="4月2日→18.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月2日→18.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-96156.htm" title="新手养猫入门必备攻略百度网盘（新手养猫宝典）">新手养猫入门必备攻略百度网盘（新手养猫宝典）</a></li>
+                        <li class="py-2"><a href="/news/article-110262.htm" title="动物疫苗公司10强排名最新 动物疫苗公司10强排名最新名单">动物疫苗公司10强排名最新 动物疫苗公司10强排名最新名单</a></li>
+                        <li class="py-2"><a href="/news/article-102794.htm" title="动物疫苗价格一览表图片高清大图下载 动物疫苗价格一览表图片高清大图下载">动物疫苗价格一览表图片高清大图下载 动物疫苗价格一览表图片高清大图下载</a></li>
+                        <li class="py-2"><a href="/news/article-109417.htm" title="动物活疫苗与死疫苗的区别（动物活疫苗和灭活疫苗的优缺点）">动物活疫苗与死疫苗的区别（动物活疫苗和灭活疫苗的优缺点）</a></li>
+                        <li class="py-2"><a href="/news/article-99057.htm" title="MySQL的安装和配置(超详细图文教程)">MySQL的安装和配置(超详细图文教程)</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-3-free-node-subscribe.htm" title="4月3日→21M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月3日→21M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-107736.htm" title="网店卖宠物用品赚钱吗现在怎么样（开网店卖宠物用品在哪里进货）">网店卖宠物用品赚钱吗现在怎么样（开网店卖宠物用品在哪里进货）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

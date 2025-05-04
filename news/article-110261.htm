@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-110261.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vue使用自定义指令实现拖拽行为</title>
+        <meta name="description" content="需求 通过自定义指令的方式实现拖拽效果，预期的使用方式为：         &lt;div style="background: #f00; width: 200px; height: 200px;"" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-110261.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="Vue使用自定义指令实现拖拽行为" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/b0b272e7d7902b62b147bb1d6725cb8a.webp" />
+        <meta property="og:release_date" content="2025-05-03T10:27:52" />
+    <meta property="og:updated_time" content="2025-05-03T10:27:52" />
+        <meta property="og:description" content="需求 通过自定义指令的方式实现拖拽效果，预期的使用方式为：         &lt;div style="background: #f00; width: 200px; height: 200px;"" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Vue使用自定义指令实现拖拽行为">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>Vue使用自定义指令实现拖拽行为</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-dracula"> <h3> <a id="_0" rel="nofollow"></a>需求</h3> <p>通过自定义指令的方式实现拖拽效果，预期的使用方式为：</p> <pre><code class="prism language-html">        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">v-drag</span><span class="token punctuation">&gt;</span></span>             XXXX         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>更重要的一个需求点：</p> <ul> <li>拖拽元素内部的子元素可以自行阻止拖拽行为</li> </ul> <p>比如：</p> <pre><code class="prism language-html">   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">background</span><span class="token punctuation">:</span> #f00<span class="token punctuation">;</span> <span class="token property">width</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span> <span class="token property">height</span><span class="token punctuation">:</span> 200px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span> <span class="token attr-name">v-drag</span><span class="token punctuation">&gt;</span></span>       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>el-button</span> <span class="token attr-name">@mousedown.native.stop</span><span class="token punctuation">&gt;</span></span>test<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>el-button</span><span class="token punctuation">&gt;</span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">&gt;</span></span> </code></pre> <p>曾经使用过<code>vue-resizable</code>，由于该组件是通过事件捕获的方式实现的，拖拽元素的子元素也会触发拖拽行为，不符合开发需求，所以自行实现了拖拽指令，相关源码如下。</p> <p>无任何依赖，复制即可使用</p> <h3> <a id="_22" rel="nofollow"></a>源码</h3> <pre><code class="prism language-js"><span class="token comment">/**  * @file 自定义拖拽命令  */</span>  <span class="token keyword">import</span> Vue <span class="token keyword">from</span> <span class="token string">'vue'</span><span class="token punctuation">;</span>  <span class="token keyword">const</span> Drag <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span>     <span class="token function">install</span><span class="token punctuation">(</span>Vue<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>         <span class="token comment">// 如需禁止拖拽元素内部某些元素触发拖拽，在内部不可触发拖拽元素上添加@mousedown.native.stop即可</span>         Vue<span class="token punctuation">.</span><span class="token function">directive</span><span class="token punctuation">(</span><span class="token string">'drag'</span><span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span>             <span class="token function">bind</span><span class="token punctuation">(</span>el<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>position <span class="token operator">=</span> <span class="token string">'absolute'</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>zIndex <span class="token operator">=</span> el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>zIndex <span class="token operator">||</span> <span class="token string">'3000'</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span><span class="token punctuation">,</span>              <span class="token function">inserted</span><span class="token punctuation">(</span>el<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 <span class="token comment">// 设置元素初始位置</span>                 <span class="token keyword">const</span> boundingClientRect <span class="token operator">=</span> el<span class="token punctuation">.</span><span class="token function">getBoundingClientRect</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> boundingClientRect<span class="token punctuation">.</span>x <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top <span class="token operator">=</span> boundingClientRect<span class="token punctuation">.</span>y <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                 <span class="token comment">// 将拖拽元素置于body子元素，防止被relative的父元素遮挡</span>                 document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span>                  <span class="token keyword">let</span> originX<span class="token punctuation">:</span> number<span class="token punctuation">;</span>                 <span class="token keyword">let</span> originY<span class="token punctuation">:</span> number<span class="token punctuation">;</span>                 <span class="token keyword">const</span> <span class="token function-variable function">mouseDownHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span>evt<span class="token punctuation">:</span> MouseEvent<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>                     originX <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientX <span class="token operator">-</span> el<span class="token punctuation">.</span>offsetLeft<span class="token punctuation">;</span>                     originY <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientY <span class="token operator">-</span> el<span class="token punctuation">.</span>offsetTop<span class="token punctuation">;</span>                     el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>cursor <span class="token operator">=</span> <span class="token string">'pointer'</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span><span class="token punctuation">;</span>                 <span class="token keyword">const</span> <span class="token function-variable function">mouseMoveHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span>evt<span class="token punctuation">:</span> MouseEvent<span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>                     <span class="token keyword">if</span> <span class="token punctuation">(</span>evt<span class="token punctuation">.</span>buttons <span class="token operator">===</span> <span class="token number">1</span> <span class="token operator">&amp;&amp;</span> originX <span class="token operator">&amp;&amp;</span> originY<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                         el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientX <span class="token operator">-</span> originX <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                         el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>top <span class="token operator">=</span> evt<span class="token punctuation">.</span>clientY <span class="token operator">-</span> originY <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>                     <span class="token punctuation">}</span>                 <span class="token punctuation">}</span><span class="token punctuation">;</span>                 <span class="token keyword">const</span> <span class="token function-variable function">mouseUpHandler</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>                     el<span class="token punctuation">.</span>style<span class="token punctuation">.</span>cursor <span class="token operator">=</span> <span class="token string">'default'</span><span class="token punctuation">;</span>                 <span class="token punctuation">}</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousedown'</span><span class="token punctuation">,</span> mouseDownHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span> mouseMoveHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> mouseUpHandler<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>__mouseDownHandler__ <span class="token operator">=</span> mouseDownHandler<span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>__mouseMoveHandler__ <span class="token operator">=</span> mouseMoveHandler<span class="token punctuation">;</span>                 el<span class="token punctuation">.</span>__mouseUpHandler__ <span class="token operator">=</span> mouseUpHandler<span class="token punctuation">;</span>             <span class="token punctuation">}</span><span class="token punctuation">,</span>              <span class="token function">unbind</span><span class="token punctuation">(</span>el<span class="token punctuation">:</span> any<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>                 el<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'mousedown'</span><span class="token punctuation">,</span> el<span class="token punctuation">.</span>__mouseDownHandler__<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'mousemove'</span><span class="token punctuation">,</span> el<span class="token punctuation">.</span>__mouseMoveHandler__<span class="token punctuation">)</span><span class="token punctuation">;</span>                 el<span class="token punctuation">.</span><span class="token function">removeEventListener</span><span class="token punctuation">(</span><span class="token string">'mouseup'</span><span class="token punctuation">,</span> el<span class="token punctuation">.</span>__mouseUpHandler__<span class="token punctuation">)</span><span class="token punctuation">;</span>                 <span class="token comment">// 当父组件销毁触发unbind的时候需要手动删除这个节点，不然会一直存留在body中</span>                 el<span class="token punctuation">.</span>parentNode<span class="token punctuation">.</span><span class="token function">removeChild</span><span class="token punctuation">(</span>el<span class="token punctuation">)</span><span class="token punctuation">;</span>             <span class="token punctuation">}</span>         <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>     <span class="token punctuation">}</span> <span class="token punctuation">}</span><span class="token punctuation">;</span> Vue<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>Drag<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token keyword">export</span> <span class="token keyword">default</span> Drag<span class="token punctuation">;</span>  </code></pre> </p></div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-109417.htm">动物活疫苗与死疫苗的区别（动物活疫苗和灭活疫苗的优缺点）</a></p>
+                                        <p>下一个：<a href="/news/article-110262.htm">动物疫苗公司10强排名最新 动物疫苗公司10强排名最新名单</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-103601.htm" title="Arrays.asList存在的坑">Arrays.asList存在的坑</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-12-node-share.htm" title="4月12日→19.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月12日→19.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-20-node-share-links.htm" title="4月20日→21.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月20日→21.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-7-node-share-links.htm" title="4月7日→19.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月7日→19.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-25-free-high-speed-nodes.htm" title="4月25日→19.2M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月25日→19.2M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-88723.htm" title="Vuex的各个模块封装">Vuex的各个模块封装</a></li>
+                        <li class="py-2"><a href="/news/article-97607.htm" title="动物疫苗经销商邀请函模板怎么写（动物疫苗销售大客户经理）">动物疫苗经销商邀请函模板怎么写（动物疫苗销售大客户经理）</a></li>
+                        <li class="py-2"><a href="/news/article-100612.htm" title="java中空指针异常情况以及解决办法">java中空指针异常情况以及解决办法</a></li>
+                        <li class="py-2"><a href="/news/article-87266.htm" title="宠物粮食加工厂加盟条件要求是什么（宠物粮加工需要多少钱）">宠物粮食加工厂加盟条件要求是什么（宠物粮加工需要多少钱）</a></li>
+                        <li class="py-2"><a href="/news/article-93153.htm" title="国内动物疫苗龙头企业名单公示山东（动物疫苗行业排名）">国内动物疫苗龙头企业名单公示山东（动物疫苗行业排名）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>

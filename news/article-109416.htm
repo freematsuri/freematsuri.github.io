@@ -1,0 +1,250 @@
+<!doctype html>
+<html xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+        <link rel="canonical" href="https://freematsuri.github.io/news/article-109416.htm" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>vue3.0中对mapState,mapGetters封装</title>
+        <meta name="description" content="看例子，如果没封装，当我们获取state的时候需要这样一个个写 const sCounter=computed(()=&gt; store.state.counter)const sName=comp" />
+        <link rel="icon" href="/assets/website/img/freematsuri/favicon.ico" type="image/x-icon"/>
+
+    <meta name="author" content="Free Matsuri免费订阅节点分享官网">
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://freematsuri.github.io/news/article-109416.htm" />
+    <meta property="og:site_name" content="Free Matsuri免费订阅节点分享官网" />
+    <meta property="og:title" content="vue3.0中对mapState,mapGetters封装" />
+    <meta property="og:image" content="https://freematsuri.github.io/uploads/20241222/e2b7ad5895aac5ee6128205287fc6846.webp" />
+        <meta property="og:release_date" content="2025-05-02T09:22:09" />
+    <meta property="og:updated_time" content="2025-05-02T09:22:09" />
+        <meta property="og:description" content="看例子，如果没封装，当我们获取state的时候需要这样一个个写 const sCounter=computed(()=&gt; store.state.counter)const sName=comp" />
+    
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="renderer" content="webkit" />
+    <meta name="force-rendering" content="webkit" />
+    <meta http-equiv="Cache-Control" content="no-transform" />
+    <meta name="robots" content="max-image-preview:large" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="vue3.0中对mapState,mapGetters封装">
+    <meta name="format-detection" content="telephone=no">
+
+    <link rel="dns-prefetch" href="https:/www.googletagmanager.com">
+    <link rel="dns-prefetch" href="https://www.googleadservices.com">
+    <link rel="dns-prefetch" href="https://www.google-analytics.com">
+    <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com">
+    <link rel="dns-prefetch" href="https://cm.g.doubleclick.net">
+        
+    <!-- Bootstrap Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/bootstrap.min.css">
+    <!-- Animate Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/animate.css">
+    <!-- Font Awesome Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/font-awesome.min.css">
+    <!-- Magnific Popup Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/magnific-popup.css">
+    <!-- IcoFont Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/icofont.css">
+    <!-- Owl Carousel Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/owl.carousel.min.css">
+    <!-- Classy Nav Min CSS-->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/classy-nav.min.css">
+    <!-- Style CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/style.css">
+    <!-- Responsive Min CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/responsive.css">
+    <!-- Color Default CSS -->
+    <link rel="stylesheet" href="/assets/website/css/freematsuri/color/color-default.css">
+    <link rel="stylesheet" href="/assets/website/css/G.css" />
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QMN91ZXX4C"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QMN91ZXX4C');
+</script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3332997411212854"
+     crossorigin="anonymous"></script>
+</head>
+
+<body data-page="detail">
+        <!-- Start Preloader Area -->
+    <div id="preloader-area">
+        <div class="loader">
+            <div id="largeBox"></div>
+            <div id="smallBox"></div>
+        </div>
+    </div>
+    <!-- End Preloader Area -->
+    <!-- Start Main Menu Area -->
+    <div class="main-header-area header-sticky">
+        <div class="container">
+            <div class="classy-nav-container breakpoint-off">
+                <!-- Classy Menu -->
+                <nav class="classy-navbar justify-content-between" id="eduNav">
+                    <!-- Logo -->
+                    <a class="nav-brand" href="/">
+                                        <span>Free Matsuri</span>
+                                        </a>
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+                    <!-- Menu -->
+                    <div class="classy-menu">
+                        <!-- close btn -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                                                <li><a href="/">首页</a></li>
+                                                                <li><a href="/paid-subscribe/">推荐机场</a></li>
+                                                                <li><a href="/client.htm">客户端</a></li>
+                                                            </ul>
+                        </div>
+                        <!-- Nav End -->
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- End Main Menu Area -->
+    <!-- Start Page Title Area -->
+    <div class="page-title">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <h1>vue3.0中对mapState,mapGetters封装</h1>
+                            <ul>
+                                <li><a href="/">首页</a></li>
+                                <li>/</li>
+                                <li><a href="/news/">新闻资讯</a></li>
+                                <li>/</li>
+                                <li>正文</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End Page Title Area -->
+    <!-- Start About Area -->
+    <section class="about-area ptb-80">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                                    <input type="hidden" id="share-website-info" data-name="Clash Meta免费节点订阅站" data-url="https://clash-meta.github.io">
+                <div class="xcblog-blog-detail xcblog-blog-detail-defined">
+                      				  				  				<div id="content_views" class="markdown_views prism-atom-one-dark"> <p>看例子，如果没封装，当我们获取state的时候需要这样一个个写</p> <pre><code class="prism language-typescript"><span class="token keyword">const</span> sCounter<span class="token operator">=</span><span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>counter<span class="token punctuation">)</span><span class="token keyword">const</span> sName<span class="token operator">=</span><span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token keyword">const</span> sAge<span class="token operator">=</span><span class="token function">computed</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=&gt;</span> store<span class="token punctuation">.</span>state<span class="token punctuation">.</span>age<span class="token punctuation">)</span></code></pre> <p>封装之后这样写</p> <pre><code class="prism language-typescript"><span class="token keyword">const</span> storeState<span class="token operator">=</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"counter"</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">)</span></code></pre> <p>开始封装创建一个useMapper.js文件</p> <pre><code class="prism language-typescript"><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> computed<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vue'</span><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> useStore<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vuex'</span><span class="token keyword">export</span><span class="token keyword">function</span><span class="token function">useMapper</span><span class="token punctuation">(</span>mapper<span class="token punctuation">,</span> mapFn<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token comment">// 拿到store独享</span><span class="token keyword">const</span> store<span class="token operator">=</span><span class="token function">useStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token comment">// 获取到对应的对象的functions: {name: function, age: function}</span><span class="token keyword">const</span> storeStateFns<span class="token operator">=</span><span class="token function">mapFn</span><span class="token punctuation">(</span>mapper<span class="token punctuation">)</span><span class="token comment">// 对数据进行转换</span><span class="token keyword">const</span> storeState<span class="token operator">=</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span>   Object<span class="token punctuation">.</span><span class="token function">keys</span><span class="token punctuation">(</span>storeStateFns<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span>fnKey<span class="token operator">=&gt;</span><span class="token punctuation">{<!-- --></span><span class="token keyword">const</span> fn<span class="token operator">=</span> storeStateFns<span class="token punctuation">[</span>fnKey<span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>$store<span class="token operator">:</span> store<span class="token punctuation">}</span><span class="token punctuation">)</span>     storeState<span class="token punctuation">[</span>fnKey<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">computed</span><span class="token punctuation">(</span>fn<span class="token punctuation">)</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token keyword">return</span> storeState<span class="token punctuation">}</span></code></pre> <p>因为封装mapState和mapGetters逻辑差不多，先看useState.js</p> <pre><code class="prism language-typescript"><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> mapState<span class="token punctuation">,</span> createNamespacedHelpers<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vuex'</span><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> useMapper<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'./useMapper'</span><span class="token keyword">export</span><span class="token keyword">function</span><span class="token function">useState</span><span class="token punctuation">(</span>moduleName<span class="token punctuation">,</span> mapper<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">let</span> mapperFn<span class="token operator">=</span> mapState<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> moduleName<span class="token operator">===</span><span class="token string">'string'</span><span class="token operator">&amp;&amp;</span> moduleName<span class="token punctuation">.</span>length<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     mapperFn<span class="token operator">=</span><span class="token function">createNamespacedHelpers</span><span class="token punctuation">(</span>moduleName<span class="token punctuation">)</span><span class="token punctuation">.</span>mapState<span class="token punctuation">}</span><span class="token keyword">return</span><span class="token function">useMapper</span><span class="token punctuation">(</span>mapper<span class="token punctuation">,</span> mapperFn<span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <p>useGetters.js</p> <pre><code class="prism language-typescript"><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> mapGetters<span class="token punctuation">,</span> createNamespacedHelpers<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'vuex'</span><span class="token keyword">import</span><span class="token punctuation">{<!-- --></span> useMapper<span class="token punctuation">}</span><span class="token keyword">from</span><span class="token string">'./useMapper'</span><span class="token keyword">export</span><span class="token keyword">function</span><span class="token function">useGetters</span><span class="token punctuation">(</span>moduleName<span class="token punctuation">,</span> mapper<span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span><span class="token keyword">let</span> mapperFn<span class="token operator">=</span> mapGetters<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> moduleName<span class="token operator">===</span><span class="token string">'string'</span><span class="token operator">&amp;&amp;</span> moduleName<span class="token punctuation">.</span>length<span class="token operator">&gt;</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{<!-- --></span>     mapperFn<span class="token operator">=</span><span class="token function">createNamespacedHelpers</span><span class="token punctuation">(</span>moduleName<span class="token punctuation">)</span><span class="token punctuation">.</span>mapGetters<span class="token punctuation">}</span><span class="token keyword">return</span><span class="token function">useMapper</span><span class="token punctuation">(</span>mapper<span class="token punctuation">,</span> mapperFn<span class="token punctuation">)</span><span class="token punctuation">}</span></code></pre> <p><code>然后使用，当没有用module模块化的时候这样写，直接在页面上{<!-- -->{counter}}.....即可</code></p> <pre><code class="prism language-typescript"><span class="token keyword">const</span> storeState<span class="token operator">=</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"counter"</span><span class="token punctuation">,</span><span class="token string">"name"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">,</span><span class="token string">"height"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">const</span> storeGetters<span class="token operator">=</span><span class="token function">useGetters</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">"nameInfo"</span><span class="token punctuation">,</span><span class="token string">"ageInfo"</span><span class="token punctuation">,</span><span class="token string">"heightInfo"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span><span class="token operator">...</span>storeState<span class="token punctuation">,</span><span class="token operator">...</span>storeGetters<span class="token punctuation">}</span></code></pre> <p><code>当用了模块化module之后这样写,假如你的modules有一个home，页面上还是这样用{<!-- -->{homeCounter}}....即可</code></p> <pre><code class="prism language-typescript"><span class="token keyword">const</span> state<span class="token operator">=</span><span class="token function">useState</span><span class="token punctuation">(</span><span class="token string">"home"</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">"homeCounter"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token keyword">const</span> getters<span class="token operator">=</span><span class="token function">useGetters</span><span class="token punctuation">(</span><span class="token string">"home"</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">"doubleHomeCounter"</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token keyword">return</span><span class="token punctuation">{<!-- --></span><span class="token operator">...</span>state<span class="token punctuation">,</span><span class="token operator">...</span>getters<span class="token punctuation">,</span><span class="token punctuation">}</span></code></pre> </div> 			                </div>
+                <div class="clearfix"></div>
+                <div class="col-md-12 mt-5">
+                                        <p>上一个：<a href="/news/article-108574.htm">南京领养猫咪协议一般押金多少钱一个月（南京在哪领养猫）</a></p>
+                                        <p>下一个：<a href="/news/article-109417.htm">动物活疫苗与死疫苗的区别（动物活疫苗和灭活疫苗的优缺点）</a></p>
+                                    </div>
+                                </div>
+                <div class="col-md-3">
+                    <div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">热门文章</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2"><a href="/news/article-94167.htm" title="开宠物店亏死了多少人啊知乎文章（开宠物店亏损多吗）">开宠物店亏死了多少人啊知乎文章（开宠物店亏损多吗）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-2-node-share-links.htm" title="4月2日→18.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月2日→18.5M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-105230.htm" title="成都宠物领养平台正规吗现在有哪些呢（成都宠物领养网免费）">成都宠物领养平台正规吗现在有哪些呢（成都宠物领养网免费）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-5-free-node-subscribe-links.htm" title="4月5日→19.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月5日→19.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-86551.htm" title="狗狗领养软件（狗狗领养的软件）">狗狗领养软件（狗狗领养的软件）</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-4-6-node-share-links.htm" title="4月6日→22.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">4月6日→22.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-5-2-free-high-speed-nodes.htm" title="5月2日→20M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">5月2日→20M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/news/article-99864.htm" title="FreeRTOS进阶之任务通知示例完全解析_操作系统">FreeRTOS进阶之任务通知示例完全解析_操作系统</a></li>
+                        <li class="py-2"><a href="/news/article-104428.htm" title="从多线程的基础，到JDK8的异步编程，再到异步框架的选择">从多线程的基础，到JDK8的异步编程，再到异步框架的选择</a></li>
+                        <li class="py-2"><a href="/news/article-87266.htm" title="宠物粮食加工厂加盟条件要求是什么（宠物粮加工需要多少钱）">宠物粮食加工厂加盟条件要求是什么（宠物粮加工需要多少钱）</a></li>
+                    </ul>
+    </div>
+</div>
+
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h3 class="panel-title">归纳</h3>
+    </div>
+    <div class="panel-body">
+        <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">12</span> <a href="/date/2025-05/" title="2025-05 归档">2025-05</a></h4>
+            </li>
+                        <li class="py-2">
+                <h4><span class="badge" style="float: right;">86</span> <a href="/date/2025-04/" title="2025-04 归档">2025-04</a></h4>
+            </li>
+                    </ul>
+    </div>
+</div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End About Area -->
+    <!-- Start Footer Area -->
+<footer class="footer-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                                    <p>
+                                                <a href="/">首页</a> |
+                                                <a href="/paid-subscribe/">推荐机场</a> |
+                                                <a href="/client.htm">客户端</a> |
+                                                <a href="/about-us.htm">关于我们</a> |
+                        <a href="/disclaimer.htm">免责申明</a> |
+                        <a href="/privacy.htm">隐私申明</a> |
+                        <a href="/sitemap.xml">网站地图</a>
+                    </p>
+                <p>
+                    <a href="/">Free Matsuri免费订阅节点分享官网</a> 版权所有
+                    <br />
+                    Powered by WordPress
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End Footer Area -->
+<div class="go-top"><i class="fa fa-angle-up"></i></div>
+<!-- jQuery Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery-min.js"></script>
+<!-- Prpper JS -->
+<script src="/assets/website/js/frontend/freematsuri/popper.min.js"></script>
+<!-- Bootstrap Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/bootstrap.min.js"></script>
+<!-- Jquery Magnific Popup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.magnific-popup.min.js"></script>
+<!-- Jquery Mixitup Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.mixitup.min.js"></script>
+<!-- Owl Carousel Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/owl.carousel.min.js"></script>
+<!-- Jquery CounterUp Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/jquery.counterup.min.js"></script>
+<!-- Waypoints Min Js -->
+<script src="/assets/website/js/frontend/freematsuri/waypoints.min.js"></script>
+<!-- Wow Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/wow.min.js"></script>
+<!-- Classy Nav Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/classy-nav.min.js"></script>
+<!-- Form Validator Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/form-validator.min.js"></script>
+<!-- Contact Form Min JS -->
+<script src="/assets/website/js/frontend/freematsuri/contact-form-script.js"></script>
+<!-- Main JS -->
+<script src="/assets/website/js/frontend/freematsuri/main.js"></script>
+<script src="https://www.freeclashnode.com/assets/js/frontend/invite-url.js"></script>
+<script src="/assets/website/js/frontend/G.js"></script>
+</body>
+
+</html>
