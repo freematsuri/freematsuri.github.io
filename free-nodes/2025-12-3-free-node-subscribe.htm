@@ -337,46 +337,6 @@ v2ray支持根据负载自动调整代理流量。通过配置负载均衡，您
     </div>
 <h4>FAQ</h4>
 <div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
-    <div class="panel-body">
-        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何配置？</h5></div>
-    <div class="panel-body">
-        用户可添加订阅 URL，Nekoray 会定期下载并替换旧节点。这样可保证节点列表始终最新，减少手动维护，提高使用效率，同时保证网络访问稳定可靠。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Trojan 的伪装域名有什么要求？</h5></div>
-    <div class="panel-body">
-        Trojan 的伪装域名必须是可以通过 HTTPS 正常访问的真实网站，并且 SSL 证书有效。伪装域名用于与服务器证书匹配，使得流量在外观上完全与正常 HTTPS 请求一致。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的流量分流规则支持哪些条件？</h5></div>
-    <div class="panel-body">
-        V2Ray 支持按域名、IP、端口、协议或用户标签进行分流。用户可灵活设置国内直连、国外代理或特定节点，实现精准控制和网络优化。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
-    <div class="panel-body">
-        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Potatso Lite 是否可导入节点二维码？</h5></div>
-    <div class="panel-body">
-        支持。用户可扫描节点二维码导入节点信息，也可手动输入节点参数。虽然不支持订阅自动更新，但对于轻量用户来说足够满足日常节点管理和流量分流需求。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>Netch 是否支持系统代理？</h5></div>
-    <div class="panel-body">
-        Netch 不直接修改系统代理，而是通过虚拟网卡（TAP 驱动）实现透明代理。这种方式不会影响浏览器设置，适合游戏和应用程序需要 UDP 支持的场景。<hr />    </div>
-</div>
-<div class="panel panel-default">
-    <div class="panel-heading"><h5>VMess AEAD 加密为何适合高封锁环境？</h5></div>
-    <div class="panel-body">
-        AEAD 加密可防止数据篡改和流量特征泄露，降低被检测风险。在高封锁网络中，保证节点可用性和连接稳定性，同时提升数据传输安全性，确保长期安全访问。<hr />    </div>
-</div>
-<div class="panel panel-default">
     <div class="panel-heading"><h5>Netch 如何选择全局代理与规则代理模式？</h5></div>
     <div class="panel-body">
         全局代理适合所有流量走节点，如游戏和全局科学上网；规则代理仅针对指定应用、IP 或端口走节点，可优化带宽使用和访问效率，根据使用场景选择模式。<hr />    </div>
@@ -384,7 +344,47 @@ v2ray支持根据负载自动调整代理流量。通过配置负载均衡，您
 <div class="panel panel-default">
     <div class="panel-heading"><h5>VMess 的 TLS 选项何时使用最合适？</h5></div>
     <div class="panel-body">
-        TLS 可提供加密和伪装，适合在高封锁或不稳定网络环境使用。结合域名伪装和证书，可让流量看起来像普通 HTTPS 请求，提升抗封锁能力和隐蔽性。    </div>
+        TLS 可提供加密和伪装，适合在高封锁或不稳定网络环境使用。结合域名伪装和证书，可让流量看起来像普通 HTTPS 请求，提升抗封锁能力和隐蔽性。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的 gRPC 模式适合哪些场景？</h5></div>
+    <div class="panel-body">
+        gRPC 支持多路复用和长连接，适合高并发访问和移动网络场景。相比 TCP 或 WebSocket，它可以减少握手次数，降低延迟，同时提高连接稳定性和吞吐量，特别适合游戏或即时通讯。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Nekoray 节点订阅自动更新如何配置？</h5></div>
+    <div class="panel-body">
+        用户可添加订阅 URL，Nekoray 会定期下载并替换旧节点。这样可保证节点列表始终最新，减少手动维护，提高使用效率，同时保证网络访问稳定可靠。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>VMess AEAD 加密为何适合高封锁环境？</h5></div>
+    <div class="panel-body">
+        AEAD 加密可防止数据篡改和流量特征泄露，降低被检测风险。在高封锁网络中，保证节点可用性和连接稳定性，同时提升数据传输安全性，确保长期安全访问。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>V2Ray 的流量分流规则支持哪些条件？</h5></div>
+    <div class="panel-body">
+        V2Ray 支持按域名、IP、端口、协议或用户标签进行分流。用户可灵活设置国内直连、国外代理或特定节点，实现精准控制和网络优化。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Netch 是否支持系统代理？</h5></div>
+    <div class="panel-body">
+        Netch 不直接修改系统代理，而是通过虚拟网卡（TAP 驱动）实现透明代理。这种方式不会影响浏览器设置，适合游戏和应用程序需要 UDP 支持的场景。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 是否可导入节点二维码？</h5></div>
+    <div class="panel-body">
+        支持。用户可扫描节点二维码导入节点信息，也可手动输入节点参数。虽然不支持订阅自动更新，但对于轻量用户来说足够满足日常节点管理和流量分流需求。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Trojan 的伪装域名有什么要求？</h5></div>
+    <div class="panel-body">
+        Trojan 的伪装域名必须是可以通过 HTTPS 正常访问的真实网站，并且 SSL 证书有效。伪装域名用于与服务器证书匹配，使得流量在外观上完全与正常 HTTPS 请求一致。<hr />    </div>
+</div>
+<div class="panel panel-default">
+    <div class="panel-heading"><h5>Potatso Lite 可以设置自定义 DNS 吗？</h5></div>
+    <div class="panel-body">
+        支持自定义 DNS，可配置本地或远程 DNS 服务器，包括 DoH/DoT。正确配置可提升解析速度、防止 DNS 污染，提高访问稳定性和安全性。    </div>
 </div>
 <div class="panel panel-default mt-5">
     <div class="panel-heading">
@@ -413,16 +413,16 @@ v2ray支持根据负载自动调整代理流量。通过配置负载均衡，您
     </div>
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
-                        <li class="py-2"><a href="/free-nodes/2025-11-29-free-node-subscribe.htm" title="11月29日→18.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月29日→18.8M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-1-node-share.htm" title="11月1日→19M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月1日→19M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-12-node-share-links.htm" title="11月12日→19M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月12日→19M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-10-12-node-share-links.htm" title="10月12日→18.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">10月12日→18.4M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-2-free-node-subscribe.htm" title="11月2日→18.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月2日→18.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-12-4-free-high-speed-nodes.htm" title="12月4日→19.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">12月4日→19.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-21-node-share.htm" title="11月21日→20.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月21日→20.7M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-6-free-subscribe-node.htm" title="11月6日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月6日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
-                        <li class="py-2"><a href="/free-nodes/2025-11-18-free-node-subscribe.htm" title="11月18日→18.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月18日→18.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-3-free-node-subscribe.htm" title="12月3日→18.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">12月3日→18.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-8-node-share-links.htm" title="11月8日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月8日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-17-free-subscribe-node.htm" title="11月17日→21.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月17日→21.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-2-free-high-speed-nodes.htm" title="12月2日→19.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">12月2日→19.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
                         <li class="py-2"><a href="/free-nodes/2025-11-26-node-share-links.htm" title="11月26日→19.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月26日→19.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-22-free-subscribe-node.htm" title="11月22日→20.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月22日→20.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-9-node-share-links.htm" title="12月9日→21.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">12月9日→21.9M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-12-6-node-share-links.htm" title="12月6日→20.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">12月6日→20.3M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-6-free-subscribe-node.htm" title="11月6日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月6日→20.1M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
+                        <li class="py-2"><a href="/free-nodes/2025-11-5-free-subscribe-node.htm" title="11月5日→18.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址">11月5日→18.6M/S|每日最新免费节点Clash/V2ray/SSR/Matsuri订阅链接地址</a></li>
                     </ul>
     </div>
 </div>
@@ -434,13 +434,10 @@ v2ray支持根据负载自动调整代理流量。通过配置负载均衡，您
     <div class="panel-body">
         <ul class="p-0 x-0" style="list-style: none;margin: 0;padding: 0;">
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">4</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
+                <h4><span class="badge" style="float: right;">11</span> <a href="/date/2025-12/" title="2025-12 归档">2025-12</a></h4>
             </li>
                         <li class="py-2">
-                <h4><span class="badge" style="float: right;">27</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
-            </li>
-                        <li class="py-2">
-                <h4><span class="badge" style="float: right;">26</span> <a href="/date/2025-10/" title="2025-10 归档">2025-10</a></h4>
+                <h4><span class="badge" style="float: right;">23</span> <a href="/date/2025-11/" title="2025-11 归档">2025-11</a></h4>
             </li>
                     </ul>
     </div>
